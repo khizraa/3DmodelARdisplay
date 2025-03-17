@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+    <title>MindAR 3D Model Test</title>
+</head>
+<body>
+    <a-scene mindar-image="imageTargetSrc: 2dfloorplan.mind; debug: true;" 
+             color-space="sRGB"
+             renderer="colorManagement: true, physicallyCorrectLights"
+             vr-mode-ui="enabled: false"
+             device-orientation-permission-ui="enabled: false">
+        
+        <a-camera position="0 0 0"></a-camera>
+
+        <a-assets>
+            <a-asset-item id="helmetModel" src="./scene.gltf"></a-asset-item>
+        </a-assets>
+
+        <!-- Light added -->
+        <a-light type="directional" intensity="1" position="0 1 1"></a-light>
+
+        <!-- Image Target -->
+        <a-entity mindar-image-target="targetIndex: 0">
+            <a-gltf-model src="#helmetModel" position="-1 -0.5 -0.1" scale="0.001 0.001 0.001"></a-gltf-model>
+        </a-entity>
+    </a-scene>
+</body>
+</html>
